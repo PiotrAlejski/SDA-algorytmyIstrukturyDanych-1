@@ -7,9 +7,10 @@ public class BubbleSort {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
         int[] array = {1, 2, 3, 4, 7, 6, 8};
+        int[] array2 = {89, 76, 35, -98, -23, 47};
 //        wrap with expression: Arrays.toString - podpowiedz, alt+enter
         System.out.println(Arrays.toString(bubbleSort.ascSort(array)));
-        System.out.println(Arrays.toString(bubbleSort.descSort(array)));
+        System.out.println(Arrays.toString(bubbleSort.descSort(array2)));
     }
 
     public int[] ascSort(int[] array) {
@@ -24,7 +25,7 @@ public class BubbleSort {
                 counter++;
                 if (array[j] > array[j + 1]) {
 //                    przestawiamy wartosci pod indeksem, nie wartosci
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
@@ -44,7 +45,7 @@ public class BubbleSort {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 counter++;
                 if (array[j] < array[j + 1]) {
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
@@ -56,9 +57,4 @@ public class BubbleSort {
         return array;
     }
 
-    public void swap(int[] array, int index1, int index2) {
-        int tmp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = tmp;
-    }
 }
