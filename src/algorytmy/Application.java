@@ -1,14 +1,19 @@
 package algorytmy;
 
 import algorytmy.structures.MyList;
+import algorytmy.structures.MyListInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
 
-//        do MyList:
+        List<String> list = new ArrayList<>();
 
-        MyList myList = initMyList();
-        MyList clonedList = myList.clone();
+//        do MyList:
+        MyListInterface myList = initMyList();
+        MyListInterface clonedList = myList.clone();
 
         System.out.println(myList);
         System.out.println(clonedList);
@@ -34,6 +39,12 @@ public class Application {
 
         clonedList.put(3, 555);
 
+        System.out.println(myList);
+        System.out.println(clonedList);
+
+        System.out.println();
+
+        myList.addAll(3, clonedList);
         System.out.println(myList);
         System.out.println(clonedList);
     }
