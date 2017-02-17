@@ -26,5 +26,45 @@ public class MyLinkedListTests {
         myLinkedList.delete(3);
         System.out.println("After removing 3rd element: " + myLinkedList);
 
+        System.out.println();
+
+//        HOMEWORK
+        System.out.println("Homework:");
+
+        System.out.println();
+
+        myLinkedList.add(1, 1);
+        System.out.println(myLinkedList);
+
+        System.out.println();
+
+        myLinkedList.put(2, 9);
+        System.out.println(myLinkedList);
+
+        System.out.println();
+
+        MyListInterface myList = new MyLinkedList();
+        myList.add(4);
+        myList.add(5);
+        myList.add(13);
+
+        myLinkedList.addAll(myList);
+        System.out.println(myLinkedList);
+
+        System.out.println();
+
+        myLinkedList.addAll(2, myList);
+        System.out.println(myLinkedList);
+
+        System.out.println();
+
+        MyListInterface myClonedList = myLinkedList.clone();
+        System.out.println(myClonedList);
+
+        System.out.println();
+
+        myLinkedList.addAll(myClonedList);
+        System.out.println(myLinkedList);
+
     }
 }

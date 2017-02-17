@@ -1,12 +1,71 @@
 package algorytmy.structures;
 
-public class MyLinkedList implements MyListInterface{
+public class MyLinkedList implements MyListInterface {
 
 //    kazde pole zawiera dwie informacje:
 //    wartosc i referencje, jaki element jest nastepny
 
     private int value;
     private MyLinkedList next;
+
+    //    HOMEWORK!
+    @Override
+    public void add(int index, int value) {
+        if (index < getSize()) {
+
+            MyLinkedList shiftingElement = getElement(index);
+            MyLinkedList previousElement = getElement(index - 1);
+
+            MyLinkedList addingElement = new MyLinkedList();
+            addingElement.value = value;
+
+            addingElement.next = shiftingElement;
+            previousElement.next = addingElement;
+        }
+    }
+
+    @Override
+    public void put(int index, int value) {
+        if (index < getSize()) {
+
+            MyLinkedList changedElement = getElement(index);
+            MyLinkedList nextElement = getElement(index + 1);
+
+            MyLinkedList puttedElement = new MyLinkedList();
+            puttedElement.value = value;
+
+            changedElement.next = nextElement;
+
+            changedElement.value = puttedElement.value;
+        }
+    }
+
+    @Override
+    public void addAll(MyListInterface myList) {
+        for(int i = 0; i < myList.getSize(); i++) {
+            this.add(myList.get(i));
+        }
+    }
+
+    @Override
+    public void addAll(int index, MyListInterface myList) {
+        for(int i = 0; i < myList.getSize(); i++) {
+            this.add(index + 1, myList.get(i));
+        }
+    }
+
+    @Override
+    public MyListInterface clone() {
+        MyListInterface myLinkedList = this;
+        MyListInterface clonedList = new MyLinkedList();
+
+        clonedList.addAll(myLinkedList);
+
+        return clonedList;
+    }
+
+//    end of homework
+
 
     //        zeby dostac sie do 3ciego elementu musimy przejsc przez 3 - do pobierania jest gorsze niz ArrayList
 
@@ -40,10 +99,6 @@ public class MyLinkedList implements MyListInterface{
         return myLinkedList;
     }
 
-    @Override
-    public void add(int index, int value) {
-
-    }
 
 //    element jest ostatni, jak jest null'em
 
@@ -71,21 +126,6 @@ public class MyLinkedList implements MyListInterface{
     }
 
     @Override
-    public void put(int index, int value) {
-
-    }
-
-    @Override
-    public void addAll(MyListInterface myList) {
-
-    }
-
-    @Override
-    public void addAll(int index, MyListInterface myList) {
-
-    }
-
-    @Override
     public void delete(int index) {
         if (index < getSize()) {
             MyLinkedList previousElement = getElement(index - 1);
@@ -98,11 +138,6 @@ public class MyLinkedList implements MyListInterface{
             deletingElement.next = null;
         }
 
-    }
-
-    @Override
-    public MyListInterface clone() {
-        return null;
     }
 
     @Override
